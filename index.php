@@ -1,60 +1,93 @@
-<?php include('config/database.php'); ?>
+<?php
+require_once 'config/database.php';
+
+$result = mysqli_query($conn, "SELECT * FROM kategori ORDER BY id_kategori DESC");
+?>
 
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Data - UTS 60324003</title>
+    <title>Data Kategori</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .btn-custom-gap { margin-right: 0.3cm; }
+        .card { border: none; border-radius: 10px; }
+    </style>
 </head>
-<body class="bg-light">
+<body class="container py-4">
 
-<div class="container mt-5">
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-            <h4 class="mb-0">Data Mahasiswa</h4>
-            <a href="create.php" class="btn btn-light btn-sm">Tambah Data</a>
-        </div>
-        <div class="card-body">
-            <table class="table table-hover table-bordered">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold text-dark m-0">Data Kategori</h3>
+        <a href="create.php" class="btn btn-primary px-4 shadow-sm">Tambah Kategori</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
                 <thead class="table-dark">
                     <tr>
-                        <th>No</th>
-                        <th>Nama</th>
-                        <th>NIM</th>
-                        <th>Aksi</th>
+                        <th class="text-center" width="5%">No</th>
+                        <th width="10%">ID Kategori</th> 
+                        <th width="12%">Kode</th>
+                        <th width="20%">Nama Kategori</th>
+                        <th>Deskripsi</th>
+                        <th class="text-center" width="10%">Status</th>
+                        <th class="text-center" width="20%">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                    $no = 1;
-                    $query = mysqli_query($conn, "SELECT * FROM mahasiswa"); // Ganti 'mahasiswa' sesuai tabelmu
-                    
-                    if(mysqli_num_rows($query) > 0) {
-                        while($data = mysqli_fetch_array($query)) {
-                    ?>
+                <?php 
+                if ($result && mysqli_num_rows($result) > 0):
+                    $no = 1; 
+                    while ($row = mysqli_fetch_assoc($result)): 
+                ?>
                     <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= $data['nama']; ?></td>
-                        <td><?= $data['nim']; ?></td>
+                        <td class="text-center fw-bold"><?= $no++; ?></td>
+                        <td class="text-center text-muted"><?= $row['id_kategori']; ?></td>
                         <td>
-                            <a href="edit.php?id=<?= $data['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="delete.php?id=<?= $data['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
+                            <span class="badge bg-light text-dark border">
+                                <?= $row['kode_kategori']; ?>
+                            </span>
+                        </td>
+                        <td class="fw-bold"><?= $row['nama_kategori']; ?></td>
+                        <td class="text-muted small">
+                            <?= $row['deskripsi'] ? $row['deskripsi'] : '-'; ?>
+                        </td>
+                        <td class="text-center">
+                            <span class="badge rounded-pill bg-<?= $row['status'] == 'Aktif' ? 'success' : 'danger'; ?>">
+                                <?= $row['status']; ?>
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <a href="edit.php?id=<?= $row['id_kategori']; ?>" 
+                               class="btn btn-sm btn-warning btn-custom-gap text-dark fw-bold">
+                               Edit
+                            </a>
+                            
+                            <a href="delete.php?id=<?= $row['id_kategori']; ?>" 
+                               onclick="return confirm('Yakin ingin menghapus data ini?')" 
+                               class="btn btn-sm btn-danger fw-bold">
+                               Hapus
+                            </a>
                         </td>
                     </tr>
-                    <?php 
-                        }
-                    } else {
-                        echo "<tr><td colspan='4' class='text-center'>Belum ada data.</td></tr>";
-                    }
-                    ?>
+                <?php 
+                    endwhile; 
+                else: 
+                ?>
+                    <tr>
+                        <td colspan="7" class="text-center py-5 text-muted">
+                            Belum ada data kategori. Klik tombol <strong>+ Tambah Kategori</strong> untuk memulai.
+                        </td>
+                    </tr>
+                <?php endif; ?>
                 </tbody>
             </table>
         </div>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
