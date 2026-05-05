@@ -1,5 +1,5 @@
-- **Nama** : Puspa Dwi Setyorini  
-- **NIM**  : 60324003  
+**Nama : Puspa Dwi Setyorini**
+**NIM  : 60324003**
 
 
 ## Deskripsi Aplikasi
