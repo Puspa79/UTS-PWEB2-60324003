@@ -30,7 +30,6 @@ Pastikan perangkat telah terinstall:
 ## Struktur Folder Project
 
 UTS-60324003/
-│
 ├── config/
 │   └── database.php        # Konfigurasi koneksi database MySQL
 │
