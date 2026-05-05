@@ -1,6 +1,3 @@
-# Aplikasi Perpustakaan Sederhana (PHP & MySQL)
-
-## Identitas
 - **Nama** : Puspa Dwi Setyorini  
 - **NIM**  : 60324003  
 
