@@ -29,6 +29,7 @@ Pastikan perangkat telah terinstall:
 
 ## Struktur Folder Project
 
+```text
 UTS-60324003/
 ├── config/
 │   └── database.php        # Konfigurasi koneksi database MySQL
@@ -40,7 +41,7 @@ UTS-60324003/
 │
 ├── database_export.sql     # File export database
 └── README.md               # Dokumentasi project
-
+```
 
 ### Link Repository
 Link repository menggunakan Git:
