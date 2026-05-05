@@ -1,37 +1,49 @@
-# UTS Pemrograman Web - Aplikasi Manajemen Kategori
+# Aplikasi Perpustakaan Sederhana (PHP & MySQL)
 
-Project ini dibuat untuk memenuhi syarat Ujian Tengah Semester (UTS) mata kuliah Pemrograman Website 2.
-
-## 1. Identitas Mahasiswa
-* **Nama** : Puspa Dwi Setyorini
-* **NIM**  : 60324003
-* **Kelas**: Pemprograman Website 2 - A
+## Identitas
+- **Nama** : Puspa Dwi Setyorini  
+- **NIM**  : 60324003  
 
 
-## 2. Deskripsi Aplikasi
-Aplikasi **Manajemen Kategori** ini berfungsi untuk melakukan operasi CRUD (*Create, Read, Update, Delete*) pada data kategori produk. Aplikasi ini telah mengimplementasikan standar keamanan dasar seperti:
-* **Sanitasi Input**: Menggunakan `htmlspecialchars()` dan `trim()` untuk mencegah XSS dan spasi liar.
-* **Keamanan Database**: Menggunakan *Prepared Statements* (`mysqli_prepare`) untuk mencegah *SQL Injection*.
-* **Validasi Server-Side**: Pengecekan format kode kategori (Regex/Substr), batas karakter, dan validasi duplikasi data.
+## Deskripsi Aplikasi
+Aplikasi Perpustakaan Sederhana berbasis PHP Native dan MySQL yang digunakan untuk mengelola data perpustakaan, khususnya data kategori.  
+Aplikasi ini dibuat sebagai Project UTS dan mengimplementasikan konsep CRUD (Create, Read, Update, Delete).
 
 
-## 3. Fitur Utama
-* **Read**: Menampilkan data kategori dalam bentuk tabel Bootstrap yang rapi dengan penomoran otomatis.
-* **Create**: Menambah kategori baru dengan validasi format `KAT-` (Panjang 4-10 karakter).
-* **Update**: Mengubah seluruh informasi kategori yang sudah ada.
-* **Delete**: Menghapus data dengan konfirmasi dan pengecekan `affected_rows` untuk memastikan data benar-benar terhapus.
+## Fitur Aplikasi
+- Menampilkan daftar kategori
+- Menambah data kategori
+- Mengedit data kategori
+- Menghapus data kategori
+- Koneksi database menggunakan MySQLi
+- Struktur folder modular dan rapi
 
 
-## 4. Struktur Folder
-uts-kategori/
+## Cara Instalasi dan Menjalankan Aplikasi
+Pastikan perangkat telah terinstall:
+- PHP 8
+- MySQL
+- Laragon
+- Web Browser (Chrome / Firefox)
+
+
+## Struktur Folder Project
+
+UTS-60324003/
+│
 ├── config/
-│   └── database.php       # Konfigurasi koneksi database MySQL
-├── index.php              # Halaman utama (Menampilkan Tabel Data)
-├── create.php             # Halaman form tambah kategori & logika insert
-├── edit.php               # Halaman form edit kategori & logika update
-├── delete.php             # Proses penghapusan data (tanpa interface)
-├── database_export.sql    # Backup/Export struktur tabel dan data kategori
-└── README.md              # Dokumentasi aplikasi
+│   └── database.php        # Konfigurasi koneksi database MySQL
+│
+├── index.php               # Halaman list data anggota (READ)
+├── create.php              # Form & proses tambah anggota (CREATE)
+├── edit.php                # Form & proses edit anggota (UPDATE)
+├── delete.php              # Proses hapus anggota (DELETE)
+│
+├── database_export.sql     # File export database
+└── README.md               # Dokumentasi project
 
-## 5. Link Repository Github
-https://github.com/Puspa79/UTS-PWEB2-60324003.git
+
+### Link Repository
+Link repository menggunakan Git:
+```bash
+git clone https://github.com/username/UTS-60324003.git
