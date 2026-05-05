@@ -1,6 +1,5 @@
-**Nama : Puspa Dwi Setyorini**
-**NIM  : 60324003**
-
+**Nama :** Puspa Dwi Setyorini  
+**NIM  :** 60324003
 
 ## Deskripsi Aplikasi
 Aplikasi Perpustakaan Sederhana berbasis PHP Native dan MySQL yang digunakan untuk mengelola data perpustakaan, khususnya data kategori.  
